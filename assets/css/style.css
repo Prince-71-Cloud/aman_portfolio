@@ -239,7 +239,7 @@ article.active {
   font-size: var(--fs-7);
   font-weight: var(--fw-500);
 }
-.h6 {
+.h6skill {
   font-size: var(--fs-5);
   font-weight: var(--fw-400);
   color: var(--light-gray);
