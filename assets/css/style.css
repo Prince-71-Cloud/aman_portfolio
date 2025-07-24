@@ -7,7 +7,12 @@
  * copyright 2022 @codewithsadee
  */
 
+<<<<<<< HEAD
 
+=======
+  
+ 
+>>>>>>> e5b5a47088cefd1ecf297cf999c03e4cec3b38b6
 
 
 
@@ -238,6 +243,15 @@ article.active {
   font-size: var(--fs-7);
   font-weight: var(--fw-500);
 }
+<<<<<<< HEAD
+=======
+.h6skill {
+  font-size: var(--fs-5);
+  font-weight: var(--fw-400);
+  color: var(--light-gray);
+  text-transform: capitalize;
+}
+>>>>>>> e5b5a47088cefd1ecf297cf999c03e4cec3b38b6
 
 .article-title {
   position: relative;
