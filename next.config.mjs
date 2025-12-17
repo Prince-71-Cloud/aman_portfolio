@@ -11,8 +11,9 @@ const nextConfig = {
     optimizePackageImports: ["@radix-ui/*"],
   },
   pageExtensions: ["tsx", "ts", "jsx", "js"],
-  basePath: "",
+  basePath: "/aman_portfolio", // GitHub Pages subdirectory (adjust to match your repo name)
   trailingSlash: true,
+  assetPrefix: "/aman_portfolio/", // Use correct asset prefix for GitHub Pages
 };
 
 export default nextConfig;

@@ -1,0 +1,2 @@
+# Disable Jekyll processing of files
+# This allows Next.js to handle all routing and static files properly
