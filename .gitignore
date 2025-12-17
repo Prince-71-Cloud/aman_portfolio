@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+*.lock
+
+# Next.js
+.next/
+out/
+
+# Environment variables
+.env*
+!.env.example
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Build outputs
+dist/
+build/
+
+# Testing
+coverage/
+.nyc_output/
+
+# Sensitive files
+config/
+secrets/
+keys/
+*.pem
+*.key
+*.p12
+*.jks
+*.store
