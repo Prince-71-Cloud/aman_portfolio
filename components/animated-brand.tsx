@@ -13,7 +13,7 @@ export default function AnimatedBrand() {
 
   useEffect(() => {
     // Cycle through different text options
-    const texts = ["AB", "A.", "Am", "AmB", "A.B"];
+    const texts = ["A", "AB", "AB.", "AB", "AB.", "IceCream"];
     let currentIndex = 0;
 
     const textInterval = setInterval(() => {
