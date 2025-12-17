@@ -13,6 +13,7 @@ const nextConfig = {
   pageExtensions: ["tsx", "ts", "jsx", "js"],
   basePath: "/aman_portfolio", // GitHub Pages subdirectory (adjust to match your repo name)
   trailingSlash: true,
+  assetPrefix: "/aman_portfolio/", // Ensure all assets are prefixed with the repo name
 };
 
 export default nextConfig;
