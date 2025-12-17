@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "next build && node post-process-html.js",
+    "build": "next build",
+    "postbuild": "node post-process-html.js",
     "dev": "next dev",
     "lint": "eslint .",
     "start": "next start"
