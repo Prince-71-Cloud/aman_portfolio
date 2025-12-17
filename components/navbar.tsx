@@ -60,13 +60,7 @@ export default function Navbar({ isDark, setIsDark }: NavbarProps) {
     }`}>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" className="relative inline-block group">
-            <div className="jsx-ec0a49874dfdc10a logo-container text-foreground group-hover:text-primary transition-colors relative inline-flex items-center justify-center">
-              <span className="jsx-ec0a49874dfdc10a logo-text inline-block font-bold text-2xl tracking-tighter font-serif italic relative z-10 transition-all duration-300 ease-in-out group-hover:scale-105">
-                AB<span className="jsx-ec0a49874dfdc10a ping-pong-dot ml-1 inline-block w-[0.3em] h-[0.3em] align-[-0.1em] rounded-full bg-primary animate-ping-pong"></span>
-              </span>
-            </div>
-          </Link>
+          <AnimatedBrand />
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
