@@ -1,30 +1,114 @@
-# Portfolio rebuild
+# Aman Bhuiyan - Portfolio Website
 
-*Automatically synced with your [v0.app](https://v0.app) deployments*
-
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/aman-bhuiyans-projects/v0-portfolio-rebuild)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.app-black?style=for-the-badge)](https://v0.app/chat/vRCjdCXlTu5)
+Welcome to my personal portfolio website! This is a modern, responsive portfolio showcasing my work as an SQA Engineer and Cybersecurity Enthusiast.
 
 ## Overview
 
-This repository will stay in sync with your deployed chats on [v0.app](https://v0.app).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.app](https://v0.app).
+This portfolio features:
+- Responsive design that works on all devices
+- Modern UI with dark/light mode toggle
+- Sections for hero, about, skills, projects, experience, and contact
+- Interactive elements and smooth animations
+- Optimized for performance
+
+## Features
+
+- 🎨 Clean, modern design with animations
+- 🌙 Dark/light mode toggle
+- 📱 Fully responsive for mobile and desktop
+- ⚡ Fast loading times with Next.js
+- 🔐 Secure authentication system (in /icecream and /notes sections)
+
+## Tech Stack
+
+- [Next.js](https://nextjs.org/) - React framework
+- [TypeScript](https://www.typescriptlang.org/) - Type-safe JavaScript
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
+- [Radix UI](https://www.radix-ui.com/) - Accessible UI components
+- [Lucide React](https://lucide.dev/) - Beautiful icon library
+
+## Project Structure
+
+```
+├── app/                 # Next.js 13+ app directory
+│   ├── api/             # API routes
+│   ├── icecream/        # Authenticated dashboard area
+│   ├── notes/           # Note-taking application
+│   ├── globals.css      # Global styles
+│   ├── layout.tsx       # Root layout
+│   └── page.tsx         # Homepage
+├── components/          # Reusable React components
+├── public/              # Static assets
+└── lib/                 # Utility functions
+```
+
+## Getting Started
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Prince-71-Cloud/aman_portfolio.git
+   cd aman_portfolio
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   # or
+   pnpm install
+   ```
+
+3. Run the development server:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Environment Variables
+
+If you plan to use the authenticated sections, create a `.env.local` file in the root directory:
+
+```env
+NEXTAUTH_SECRET=your_secret_here
+DB_PATH=./data/db.json  # Path for local database
+GITHUB_TOKEN=your_github_token  # For GitHub integration
+```
 
 ## Deployment
 
-Your project is live at:
+You can deploy this application to various platforms:
 
-**[https://vercel.com/aman-bhuiyans-projects/v0-portfolio-rebuild](https://vercel.com/aman-bhuiyans-projects/v0-portfolio-rebuild)**
+### Vercel (Recommended for Next.js)
+1. Push to GitHub
+2. Connect to [Vercel](https://vercel.com/)
+3. Import your repository
+4. Deploy!
 
-## Build your app
+### Other Platforms
+This is a standard Next.js application that can be deployed to:
+- Netlify
+- AWS Amplify
+- Google Cloud Platform
+- Any platform supporting Next.js
 
-Continue building your app on:
+## Security Features
 
-**[https://v0.app/chat/vRCjdCXlTu5](https://v0.app/chat/vRCjdCXlTu5)**
+The portfolio includes secure authentication systems:
+- JWT-based authentication
+- Protected routes via middleware
+- Secure password handling with bcrypt
+- GitHub integration with personal access tokens
 
-## How It Works
+## Contributing
 
-1. Create and modify your project using [v0.app](https://v0.app)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+Feel free to fork this repository and make changes! Pull requests are welcome.
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE).
