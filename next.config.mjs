@@ -1,18 +1,20 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export", // This enables static export for GitHub Pages
   typescript: {
     ignoreBuildErrors: true,
   },
   images: {
-    unoptimized: true, // Required for static export
+    // Removed unoptimized: true to allow for image optimization
+    domains: ['github.com', 'www.youtube.com', 'i.ytimg.com'], // Add domains for your blog images
+    formats: ['image/webp', 'image/avif'], // Support modern formats
   },
   experimental: {
     optimizePackageImports: ["@radix-ui/*"],
   },
-  pageExtensions: ["tsx", "ts", "jsx", "js"],
-  basePath: "/aman_portfolio",
-  trailingSlash: true,
-};
+  // Add turbopack root configuration to address workspace warning
+  turbopack: {
+    root: process.cwd(),
+  },
+}
 
-export default nextConfig;
+export default nextConfig

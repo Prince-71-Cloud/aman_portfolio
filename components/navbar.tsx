@@ -1,29 +1,25 @@
-"use client";
+"use client"
 
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { Sun, Moon, Menu, X, FileText } from "lucide-react";
-import AnimatedBrand from "./animated-brand";
+import { useState, useEffect } from "react"
+import Link from "next/link"
+import { Sun, Moon, Menu, X, FileText } from "lucide-react"
 
 interface NavbarProps {
-  isDark: boolean;
-  setIsDark: (value: boolean) => void;
+  isDark: boolean
+  setIsDark: (value: boolean) => void
 }
 
 export default function Navbar({ isDark, setIsDark }: NavbarProps) {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const router = useRouter();
+  const [isOpen, setIsOpen] = useState(false)
+  const [showIceCream, setShowIceCream] = useState(false)
 
-  // Handle scrolling effect for navbar
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    const interval = setInterval(() => {
+      setShowIceCream((prev) => !prev)
+    }, 3000) // Toggle every 3 seconds
+
+    return () => clearInterval(interval)
+  }, [])
 
   const navLinks = [
     { label: "About", href: "#about" },
@@ -31,36 +27,38 @@ export default function Navbar({ isDark, setIsDark }: NavbarProps) {
     { label: "Projects", href: "#projects" },
     { label: "Contact", href: "#contact" },
     { label: "Notes", href: "/notes", isSpecial: true },
-  ];
-
-  // Function to handle hash navigation
-  const handleHashNavigation = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (href.startsWith("#")) {
-      e.preventDefault();
-      const elementId = href.substring(1); // Remove the # symbol
-      const element = document.getElementById(elementId);
-      if (element) {
-        const offsetTop = element.offsetTop - 80; // Adjust for navbar height
-        window.scrollTo({
-          top: offsetTop,
-          behavior: "smooth"
-        });
-
-        // Update URL hash without causing page refresh
-        window.history.pushState(null, "", href);
-      }
-    }
-  };
+  ]
 
   return (
-    <nav className={`sticky top-0 z-50 backdrop-blur-md border-b transition-all duration-300 ${
-      isScrolled
-        ? "bg-background/80 border-border/40"
-        : "bg-background/60 border-white/20 dark:border-white/10"
-    }`}>
+    <nav className="sticky top-0 z-50 backdrop-blur-md bg-background/80 border-b border-border/40">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <AnimatedBrand />
+          <Link href="/" className="text-lg font-bold text-foreground hover:text-primary transition-colors group">
+            <span className="relative inline-block">
+              <span
+                className={`inline-flex items-center gap-1.5 transition-all duration-500 ${
+                  showIceCream ? "opacity-0 scale-90" : "opacity-100 scale-100"
+                }`}
+              >
+                AB
+                <span className="relative flex h-2 w-2 animate-bounce-ball">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                </span>
+              </span>
+              <span
+                className={`absolute left-0 top-0 inline-flex items-center gap-1.5 transition-all duration-500 ${
+                  showIceCream ? "opacity-100 scale-100" : "opacity-0 scale-90"
+                }`}
+              >
+                IceCream
+                <span className="relative flex h-2 w-2 animate-bounce-ball">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                </span>
+              </span>
+            </span>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
@@ -68,7 +66,6 @@ export default function Navbar({ isDark, setIsDark }: NavbarProps) {
               <Link
                 key={link.href}
                 href={link.href}
-                onClick={(e) => handleHashNavigation(e, link.href)}
                 className={`text-sm font-medium transition-colors hover:text-primary ${
                   link.isSpecial
                     ? "flex items-center gap-2 px-4 py-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/20"
@@ -113,11 +110,7 @@ export default function Navbar({ isDark, setIsDark }: NavbarProps) {
               className="p-2 rounded-lg hover:bg-accent transition-colors"
               aria-label="Toggle menu"
             >
-              {isOpen ? (
-                <X className="w-6 h-6 text-foreground" />
-              ) : (
-                <Menu className="w-6 h-6 text-foreground" />
-              )}
+              {isOpen ? <X className="w-6 h-6 text-foreground" /> : <Menu className="w-6 h-6 text-foreground" />}
             </button>
           </div>
         </div>
@@ -131,19 +124,14 @@ export default function Navbar({ isDark, setIsDark }: NavbarProps) {
               <Link
                 key={link.href}
                 href={link.href}
-                onClick={(e) => {
-                  handleHashNavigation(e, link.href);
-                  setIsOpen(false);
-                }}
+                onClick={() => setIsOpen(false)}
                 className={`block px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                   link.isSpecial
                     ? "bg-primary/10 text-primary hover:bg-primary/20"
                     : "text-muted-foreground hover:text-foreground hover:bg-accent"
                 }`}
               >
-                {link.isSpecial && (
-                  <FileText className="w-4 h-4 inline-block mr-2" />
-                )}
+                {link.isSpecial && <FileText className="w-4 h-4 inline-block mr-2" />}
                 {link.label}
               </Link>
             ))}
@@ -151,5 +139,5 @@ export default function Navbar({ isDark, setIsDark }: NavbarProps) {
         </div>
       )}
     </nav>
-  );
+  )
 }

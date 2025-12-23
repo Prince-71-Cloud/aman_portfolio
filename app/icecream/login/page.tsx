@@ -1,33 +1,33 @@
-"use client";
+"use client"
 
-import type React from "react";
+import type React from "react"
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import Link from "next/link";
+import { useState } from "react"
+import { useRouter } from "next/navigation"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import Link from "next/link"
 
 export default function AdminLoginPage() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
-  const router = useRouter();
+  const [username, setUsername] = useState("")
+  const [password, setPassword] = useState("")
+  const [error, setError] = useState("")
+  const [loading, setLoading] = useState(false)
+  const router = useRouter()
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setError("");
-    setLoading(true);
+    e.preventDefault()
+    setError("")
+    setLoading(true)
 
     if (username === "admin" && password === "admin123") {
-      localStorage.setItem("isAdmin", "true");
-      router.push("/icecream/dashboard");
+      localStorage.setItem("isAdmin", "true")
+      router.push("/icecream/dashboard")
     } else {
-      setError("Invalid username or password");
-      setLoading(false);
+      setError("Invalid username or password")
+      setLoading(false)
     }
-  };
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-background px-4">
@@ -35,7 +35,7 @@ export default function AdminLoginPage() {
         <div className="text-center">
           <Link href="/" className="inline-block">
             <h1 className="text-3xl font-bold">
-              AB<span className="text-primary">.</span>
+              AR<span className="text-primary">.</span>
             </h1>
           </Link>
           <p className="mt-2 text-sm text-muted-foreground">Admin Login</p>
@@ -45,10 +45,7 @@ export default function AdminLoginPage() {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-4">
               <div>
-                <label
-                  htmlFor="username"
-                  className="block text-sm font-medium mb-2"
-                >
+                <label htmlFor="username" className="block text-sm font-medium mb-2">
                   Username
                 </label>
                 <Input
@@ -63,10 +60,7 @@ export default function AdminLoginPage() {
               </div>
 
               <div>
-                <label
-                  htmlFor="password"
-                  className="block text-sm font-medium mb-2"
-                >
+                <label htmlFor="password" className="block text-sm font-medium mb-2">
                   Password
                 </label>
                 <Input
@@ -82,9 +76,7 @@ export default function AdminLoginPage() {
             </div>
 
             {error && (
-              <div className="p-3 text-sm text-red-500 bg-red-500/10 rounded-lg border border-red-500/20">
-                {error}
-              </div>
+              <div className="p-3 text-sm text-red-500 bg-red-500/10 rounded-lg border border-red-500/20">{error}</div>
             )}
 
             <Button type="submit" disabled={loading} className="w-full">
@@ -94,14 +86,11 @@ export default function AdminLoginPage() {
         </div>
 
         <div className="text-center">
-          <Link
-            href="/notes"
-            className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-          >
+          <Link href="/notes" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
             ← Back to Notes
           </Link>
         </div>
       </div>
     </div>
-  );
+  )
 }
