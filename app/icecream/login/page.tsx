@@ -20,7 +20,7 @@ export default function AdminLoginPage() {
     setError("");
     setLoading(true);
 
-    if (username === "admin" && password === "admin123") {
+    if (username === "Icecream" && password === "Life2255") {
       localStorage.setItem("isAdmin", "true");
       router.push("/icecream/dashboard");
     } else {
