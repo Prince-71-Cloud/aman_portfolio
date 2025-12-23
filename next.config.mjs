@@ -5,7 +5,20 @@ const nextConfig = {
   },
   images: {
     // Removed unoptimized: true to allow for image optimization
-    domains: ['github.com', 'www.youtube.com', 'i.ytimg.com'], // Add domains for your blog images
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'github.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.youtube.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'i.ytimg.com',
+      },
+    ], // Add domains for your blog images
     formats: ['image/webp', 'image/avif'], // Support modern formats
   },
   experimental: {

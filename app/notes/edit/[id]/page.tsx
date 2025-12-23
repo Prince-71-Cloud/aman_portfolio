@@ -47,17 +47,17 @@ export default function EditPostPage({ params }: { params: Promise<{ id: string 
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ title, content, excerpt, status }),
-      })
+      });
 
       if (res.ok) {
-        router.push("/notes/dashboard")
+        router.push("/notes/dashboard");
       } else {
-        alert("Failed to update post")
+        alert("Failed to update post");
       }
     } catch (error) {
-      alert("Something went wrong")
+      alert("Something went wrong");
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
   }
 
