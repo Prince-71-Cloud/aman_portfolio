@@ -1,7 +1,16 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+
+// Dynamically import Three.js component (no SSR)
+const ThreeBackground = dynamic(() => import("./three-background"), {
+  ssr: false,
+  loading: () => (
+    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5" />
+  ),
+});
 
 export default function Hero() {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -48,8 +57,11 @@ export default function Hero() {
   }, [displayedText, isDeleting, currentKeywordIndex, keywords]);
 
   return (
-    <section className="py-20 px-4 overflow-hidden" id="hero">
-      <div className="max-w-6xl mx-auto">
+    <section className="py-20 px-4 overflow-hidden relative" id="hero">
+      {/* Three.js Floating Particles Background */}
+      <ThreeBackground className="z-0" />
+
+      <div className="max-w-6xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className={`${isLoaded ? "fade-in" : "opacity-0"}`}>
