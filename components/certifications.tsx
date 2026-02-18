@@ -4,22 +4,24 @@ import { ExternalLink, X } from "lucide-react"
 import { useState } from "react"
 
 export default function Certifications() {
-  const [selectedCert, setSelectedCert] = useState<string | null>(null)
+  const [selectedCert, setSelectedCert] = useState<any | null>(null)
 
   const certs = [
     {
       name: "Full Stack SQA Course",
       issuer: "IT Training BD",
-      date: "2026-02-18",
+      date: "2026-01-18",
       link: "https://drive.google.com/file/d/14bmODJtTd0JOH7tvnqUibxq2L_L9ANjh/view?usp=sharing",
-      image: "image/itTrainingBd.png",
+      isPdf: true,
+      image: "/images/2026-02-18_12-41.png",
     },
     {
-      name: "CYBER INVASION'25 Powered by TechnoNext",
+      name: "CYBER INVASION'25",
       issuer: "TechnoNext",
-      date: "2026-02-18",
+      date: "2025-12-18",
+      link: "https://drive.google.com/file/d/1VGdmiXrmcnttYUDmmQUyqUU1fvFZEtme/view?usp=sharing",
       // This Drive file is a PDF; show a placeholder thumbnail and open the PDF link
-      image: "/images/pdf-placeholder.svg",
+      //image: "/images/pdf-placeholder.svg",
       isPdf: true,
       image: "/images/2026-02-18_12-10.png",
     },
@@ -104,7 +106,7 @@ export default function Certifications() {
             <div
               key={cert.name}
               className="glass-card p-6 hover:border-primary/50 transition-all group cursor-pointer flex flex-col"
-              onClick={() => setSelectedCert(cert.image)}
+              onClick={() => setSelectedCert(cert)}
             >
               {/* Certificate thumbnail */}
               <div className="relative mb-4 w-full h-40 rounded-lg overflow-hidden border border-white/20 group-hover:border-primary/50 transition-colors">
@@ -142,7 +144,6 @@ export default function Certifications() {
           ))}
         </div>
       </div>
-
       {selectedCert && (
         <div
           className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
@@ -159,7 +160,23 @@ export default function Certifications() {
             >
               <X className="w-6 h-6" />
             </button>
-            <img src={selectedCert || "/placeholder.svg"} alt="Certificate" className="w-full h-full object-contain" />
+            {/* If the selected certificate is a PDF, embed a preview using Drive's preview URL (works for Drive files) */}
+            {selectedCert.isPdf ? (
+              <iframe
+                title={selectedCert.name || "Certificate PDF"}
+                src={
+                  // Convert Drive /file/d/:id/view URL to embeddable /preview URL
+                  selectedCert.link.includes("/file/d/")
+                    ? selectedCert.link.replace("/view?usp=sharing", "/preview").replace("/view", "/preview")
+                    : selectedCert.link
+                }
+                className="w-full h-[80vh]"
+                frameBorder={0}
+                sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+              />
+            ) : (
+              <img src={selectedCert.image || "/placeholder.svg"} alt={selectedCert.name || "Certificate"} className="w-full h-full object-contain" />
+            )}
           </div>
         </div>
       )}
