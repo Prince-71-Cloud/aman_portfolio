@@ -8,6 +8,20 @@ export default function Certifications() {
 
   const certs = [
     {
+      name: "Certificate - Data Security",
+      issuer: "Personal",
+      date: "2026-02-18",
+      link: "https://drive.google.com/file/d/14bmODJtTd0JOH7tvnqUibxq2L_L9ANjh/view?usp=sharing",
+      image: "https://drive.google.com/uc?export=view&id=14bmODJtTd0JOH7tvnqUibxq2L_L9ANjh",
+    },
+    {
+      name: "Certificate - Advanced Testing",
+      issuer: "Personal",
+      date: "2026-02-18",
+      link: "https://drive.google.com/file/d/1VGdmiXrmcnttYUDmmQUyqUU1fvFZEtme/view?usp=sharing",
+      image: "https://drive.google.com/uc?export=view&id=1VGdmiXrmcnttYUDmmQUyqUU1fvFZEtme",
+    },
+    {
       name: "SQL Injection Attacks",
       issuer: "EC-Council",
       date: "16th Jan 2025",
