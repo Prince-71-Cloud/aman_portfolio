@@ -1,8 +1,7 @@
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
-import { Geist_Mono, Inter } from "next/font/google";
-import type React from "react";
+// Import client component directly; layout is a server component but can render client components.
+import ThreeUI from "../components/three-ui"
 import "./globals.css";
 
 const ThreeUI = dynamic(() => import("../components/three-ui"), { ssr: false });
