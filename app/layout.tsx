@@ -1,26 +1,31 @@
-import type React from "react"
-import type { Metadata } from "next"
-import { Inter, Geist_Mono } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
-import "./globals.css"
+import { Analytics } from "@vercel/analytics/next";
+import type { Metadata } from "next";
+import dynamic from "next/dynamic";
+import { Geist_Mono, Inter } from "next/font/google";
+import type React from "react";
+import "./globals.css";
+
+const ThreeUI = dynamic(() => import("../components/three-ui"), { ssr: false });
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
-})
+});
 
-const _geistMono = Geist_Mono({ subsets: ["latin"] })
+const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Aman Bhuiyan - SQA Engineer & Cybersecurity Enthusiast",
   description:
     "SQA Engineer, Security Researcher, and Bug Bounty Hunter. Specialized in manual testing, penetration testing, and vulnerability assessment.",
   generator: "v0.app",
-  keywords: "SQA, Quality Assurance, Cybersecurity, Bug Bounty, Penetration Testing, Security Research",
+  keywords:
+    "SQA, Quality Assurance, Cybersecurity, Bug Bounty, Penetration Testing, Security Research",
   openGraph: {
     title: "Aman Bhuiyan - SQA Engineer & Cybersecurity Enthusiast",
-    description: "Ensuring quality, security, and performance through modern testing and ethical security research.",
+    description:
+      "Ensuring quality, security, and performance through modern testing and ethical security research.",
     type: "website",
   },
   icons: {
@@ -40,25 +45,41 @@ export const metadata: Metadata = {
     ],
     apple: "/apple-icon.png",
   },
-}
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <meta name="google-site-verification" content="IiQewZPiI63v2y5FHzmAoDjCPGh2eHveWQT2iGV8LdY" />
-        <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
-        <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+        <meta
+          name="google-site-verification"
+          content="IiQewZPiI63v2y5FHzmAoDjCPGh2eHveWQT2iGV8LdY"
+        />
+        <meta
+          name="theme-color"
+          content="#ffffff"
+          media="(prefers-color-scheme: light)"
+        />
+        <meta
+          name="theme-color"
+          content="#0f172a"
+          media="(prefers-color-scheme: dark)"
+        />
+        <meta
+          name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=5"
+        />
       </head>
       <body className={`${inter.className} font-sans antialiased`}>
         {children}
+        {/* Global Three.js UI overlay for buttons and micro-interactions */}
+        <ThreeUI />
         <Analytics />
       </body>
     </html>
-  )
+  );
 }
