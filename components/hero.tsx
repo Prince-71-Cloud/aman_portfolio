@@ -1,46 +1,51 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import Link from "next/link"
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function Hero() {
-  const [isLoaded, setIsLoaded] = useState(false)
-  const [currentKeywordIndex, setCurrentKeywordIndex] = useState(0)
-  const [displayedText, setDisplayedText] = useState("")
-  const [isDeleting, setIsDeleting] = useState(false)
-  const keywords = ["SQA Engineer", "Cybersecurity Enthusiast", "Bug Hunter", "Tester"]
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [currentKeywordIndex, setCurrentKeywordIndex] = useState(0);
+  const [displayedText, setDisplayedText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
+  const keywords = [
+    "SQA Engineer",
+    "Cybersecurity Enthusiast",
+    "Bug Hunter",
+    "Tester",
+  ];
 
   useEffect(() => {
-    setIsLoaded(true)
-  }, [])
+    setIsLoaded(true);
+  }, []);
 
   useEffect(() => {
-    const currentWord = keywords[currentKeywordIndex]
-    let timeout: NodeJS.Timeout
+    const currentWord = keywords[currentKeywordIndex];
+    let timeout: NodeJS.Timeout;
 
     if (!isDeleting && displayedText !== currentWord) {
       // Typing - slower for aesthetic effect
       timeout = setTimeout(() => {
-        setDisplayedText(currentWord.slice(0, displayedText.length + 1))
-      }, 150) // Increased from 100ms to 150ms
+        setDisplayedText(currentWord.slice(0, displayedText.length + 1));
+      }, 150); // Increased from 100ms to 150ms
     } else if (!isDeleting && displayedText === currentWord) {
       // Wait before deleting - longer pause
       timeout = setTimeout(() => {
-        setIsDeleting(true)
-      }, 4000) // Increased from 3000ms to 4000ms
+        setIsDeleting(true);
+      }, 4000); // Increased from 3000ms to 4000ms
     } else if (isDeleting && displayedText !== "") {
       // Deleting
       timeout = setTimeout(() => {
-        setDisplayedText(displayedText.slice(0, -1))
-      }, 80) // Slightly slower delete
+        setDisplayedText(displayedText.slice(0, -1));
+      }, 80); // Slightly slower delete
     } else if (isDeleting && displayedText === "") {
       // Move to next word
-      setIsDeleting(false)
-      setCurrentKeywordIndex((prev) => (prev + 1) % keywords.length)
+      setIsDeleting(false);
+      setCurrentKeywordIndex((prev) => (prev + 1) % keywords.length);
     }
 
-    return () => clearTimeout(timeout)
-  }, [displayedText, isDeleting, currentKeywordIndex, keywords])
+    return () => clearTimeout(timeout);
+  }, [displayedText, isDeleting, currentKeywordIndex, keywords]);
 
   return (
     <section className="py-20 px-4 overflow-hidden" id="hero">
@@ -51,7 +56,9 @@ export default function Hero() {
             <h1 className="text-5xl lg:text-6xl font-bold mb-6 text-balance text-foreground">
               <div className="leading-tight">
                 <div className="mb-2">Hi, I'm</div>
-                <div className="text-primary font-extrabold mb-3">Aman Bhuiyan</div>
+                <div className="text-primary font-extrabold mb-3">
+                  Aman Bhuiyan
+                </div>
                 <div className="min-h-[1.2em]">
                   <span className="gradient-text-animated font-extrabold">
                     {displayedText}
@@ -61,7 +68,8 @@ export default function Hero() {
               </div>
             </h1>
             <p className="text-xl text-foreground-secondary mb-8 leading-relaxed font-medium">
-              I ensure quality, security, and performance through modern testing and ethical security research.
+              I ensure quality, security, and performance through modern testing
+              and ethical security research.
             </p>
 
             <div className="flex flex-wrap gap-4 mb-12">
@@ -72,7 +80,7 @@ export default function Hero() {
                 View Projects
               </Link>
               <a
-                href="https://drive.google.com/file/d/1MJO30jkCzX5Jyg9kNY0F-D1-R51HFjtf/view?usp=sharing"
+                href="https://drive.google.com/file/d/1l3OqqBTVqLwXckv25r1gusM8p2x3xSlX/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="glass-button hover:text-primary"
@@ -84,11 +92,15 @@ export default function Hero() {
             <div className="flex gap-6">
               <div className="flex flex-col">
                 <span className="text-3xl font-bold gradient-text">50+</span>
-                <span className="text-sm text-foreground-secondary font-medium">Security Findings</span>
+                <span className="text-sm text-foreground-secondary font-medium">
+                  Security Findings
+                </span>
               </div>
               <div className="flex flex-col">
                 <span className="text-3xl font-bold gradient-text">7</span>
-                <span className="text-sm text-foreground-secondary font-medium">Bug Bounty Programs</span>
+                <span className="text-sm text-foreground-secondary font-medium">
+                  Bug Bounty Programs
+                </span>
               </div>
             </div>
           </div>
@@ -99,7 +111,11 @@ export default function Hero() {
             <div
               className={`relative w-64 h-64 rounded-full glass-panel flex items-center justify-center overflow-hidden border-2 border-primary/20 shadow-2xl ${isLoaded ? "animate-float" : ""}`}
             >
-              <img src="/images/pxl-20250718-095953598.jpg" alt="Aman Bhuiyan" className="w-full h-full object-cover" />
+              <img
+                src="/images/pxl-20250718-095953598.jpg"
+                alt="Aman Bhuiyan"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
         </div>
@@ -154,5 +170,5 @@ export default function Hero() {
         }
       `}</style>
     </section>
-  )
+  );
 }
