@@ -8,18 +8,20 @@ export default function Certifications() {
 
   const certs = [
     {
-      name: "Certificate - Data Security",
-      issuer: "Personal",
+      name: "Full Stack SQA Course",
+      issuer: "IT Training BD",
       date: "2026-02-18",
       link: "https://drive.google.com/file/d/14bmODJtTd0JOH7tvnqUibxq2L_L9ANjh/view?usp=sharing",
-      image: "https://drive.google.com/uc?export=view&id=14bmODJtTd0JOH7tvnqUibxq2L_L9ANjh",
+      image: "image/itTrainingBd.png",
     },
     {
-      name: "Certificate - Advanced Testing",
-      issuer: "Personal",
+      name: "CYBER INVASION'25 Powered by TechnoNext",
+      issuer: "TechnoNext",
       date: "2026-02-18",
-      link: "https://drive.google.com/file/d/1VGdmiXrmcnttYUDmmQUyqUU1fvFZEtme/view?usp=sharing",
-      image: "https://drive.google.com/uc?export=view&id=1VGdmiXrmcnttYUDmmQUyqUU1fvFZEtme",
+      // This Drive file is a PDF; show a placeholder thumbnail and open the PDF link
+      image: "/images/pdf-placeholder.svg",
+      isPdf: true,
+      image: "/images/2026-02-18_12-10.png",
     },
     {
       name: "SQL Injection Attacks",
