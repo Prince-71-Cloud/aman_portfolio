@@ -3,6 +3,15 @@
 export default function Activities() {
   const activities = [
     {
+      company: "NASA",
+      logo: "/images/NASA-Logo-500x414.png", // Fixed to match actual file name
+      title: "Hall of Fame",
+      description:
+        "I identified and reported Reflected Cross-Site Scripting (XSS) vulnerabilities across 12 NASA subdomains.",
+      date: "16 April 2026",
+      color: "from-blue-900 to-blue-400",
+    },
+    {
       company: "Google",
       logo: "/images/sq-google-g-logo-update-dezeen-2364-col-0.jpg",
       title: "Security Researcher",

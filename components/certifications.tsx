@@ -8,6 +8,14 @@ export default function Certifications() {
 
   const certs = [
     {
+      name: "Letter of Recognition from NASA",
+      issuer: "NASA",
+      date: "2026-04-16",
+      link: "https://drive.google.com/file/d/1nVKrIlDasF_t8qfWAqg58nfYULEwb7ea/view?usp=sharing",
+      isPdf: true,
+      image: "/images/LOR.png",
+    },
+    {
       name: "Full Stack SQA Course",
       issuer: "IT Training BD",
       date: "2026-01-18",
